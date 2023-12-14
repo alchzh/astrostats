@@ -1,0 +1,386 @@
+%% Beginning of file 'sample631.tex'
+%%
+%% Modified 2022 May  
+%%
+%% This is a sample manuscript marked up using the
+%% AASTeX v6.31 LaTeX 2e macros.
+%%
+%% AASTeX is now based on Alexey Vikhlinin's emulateapj.cls 
+%% (Copyright 2000-2015).  See the classfile for details.
+
+%% AASTeX requires revtex4-1.cls and other external packages such as
+%% latexsym, graphicx, amssymb, longtable, and epsf.  Note that as of 
+%% Oct 2020, APS now uses revtex4.2e for its journals but remember that 
+%% AASTeX v6+ still uses v4.1. All of these external packages should 
+%% already be present in the modern TeX distributions but not always.
+%% For example, revtex4.1 seems to be missing in the linux version of
+%% TexLive 2020. One should be able to get all packages from www.ctan.org.
+%% In particular, revtex v4.1 can be found at 
+%% https://www.ctan.org/pkg/revtex4-1.
+
+%% The first piece of markup in an AASTeX v6.x document is the \documentclass
+%% command. LaTeX will ignore any data that comes before this command. The 
+%% documentclass can take an optional argument to modify the output style.
+%% The command below calls the preprint style which will produce a tightly 
+%% typeset, one-column, single-spaced document.  It is the default and thus
+%% does not need to be explicitly stated.
+%%
+%% using aastex version 6.3
+\documentclass[modern]{aastex631}
+
+%% The default is a single spaced, 10 point font, single spaced article.
+%% There are 5 other style options available via an optional argument. They
+%% can be invoked like this:
+%%
+%% \documentclass[arguments]{aastex631}
+%% 
+%% where the layout options are:
+%%
+%%  twocolumn   : two text columns, 10 point font, single spaced article.
+%%                This is the most compact and represent the final published
+%%                derived PDF copy of the accepted manuscript from the publisher
+%%  manuscript  : one text column, 12 point font, double spaced article.
+%%  preprint    : one text column, 12 point font, single spaced article.  
+%%  preprint2   : two text columns, 12 point font, single spaced article.
+%%  modern      : a stylish, single text column, 12 point font, article with
+%% 		  wider left and right margins. This uses the Daniel
+%% 		  Foreman-Mackey and David Hogg design.
+%%  RNAAS       : Supresses an abstract. Originally for RNAAS manuscripts 
+%%                but now that abstracts are required this is obsolete for
+%%                AAS Journals. Authors might need it for other reasons. DO NOT
+%%                use \begin{abstract} and \end{abstract} with this style.
+%%
+%% Note that you can submit to the AAS Journals in any of these 6 styles.
+%%
+%% There are other optional arguments one can invoke to allow other stylistic
+%% actions. The available options are:
+%%
+%%   astrosymb    : Loads Astrosymb font and define \astrocommands. 
+%%   tighten      : Makes baselineskip slightly smaller, only works with 
+%%                  the twocolumn substyle.
+%%   times        : uses times font instead of the default
+%%   linenumbers  : turn on lineno package.
+%%   trackchanges : required to see the revision mark up and print its output
+%%   longauthor   : Do not use the more compressed footnote style (default) for 
+%%                  the author/collaboration/affiliations. Instead print all
+%%                  affiliation information after each name. Creates a much 
+%%                  longer author list but may be desirable for short 
+%%                  author papers.
+%% twocolappendix : make 2 column appendix.
+%%   anonymous    : Do not show the authors, affiliations and acknowledgments 
+%%                  for dual anonymous review.
+%%
+%% these can be used in any combination, e.g.
+%%
+%% \documentclass[twocolumn,linenumbers,trackchanges]{aastex631}
+%%
+%% AASTeX v6.* now includes \hyperref support. While we have built in specific
+%% defaults into the classfile you can manually override them with the
+%% \hypersetup command. For example,
+%%
+%% \hypersetup{linkcolor=red,citecolor=green,filecolor=cyan,urlcolor=magenta}
+%%
+%% will change the color of the internal links to red, the links to the
+%% bibliography to green, the file links to cyan, and the external links to
+%% magenta. Additional information on \hyperref options can be found here:
+%% https://www.tug.org/applications/hyperref/manual.html#x1-40003
+%%
+%% Note that in v6.3 "bookmarks" has been changed to "true" in hyperref
+%% to improve the accessibility of the compiled pdf file.
+%%
+%% If you want to create your own macros, you can do so
+%% using \newcommand. Your macros should appear before
+%% the \begin{document} command.
+%%
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+
+%% Reintroduced the \received and \accepted commands from AASTeX v5.2
+%\received{March 1, 2021}
+%\revised{April 1, 2021}
+%\accepted{\today}
+
+%% Command to document which AAS Journal the manuscript was submitted to.
+%% Adds "Submitted to " the argument.
+%\submitjournal{PSJ}
+
+%% For manuscript that include authors in collaborations, AASTeX v6.31
+%% builds on the \collaboration command to allow greater freedom to 
+%% keep the traditional author+affiliation information but only show
+%% subsets. The \collaboration command now must appear AFTER the group
+%% of authors in the collaboration and it takes TWO arguments. The last
+%% is still the collaboration identifier. The text given in this
+%% argument is what will be shown in the manuscript. The first argument
+%% is the number of author above the \collaboration command to show with
+%% the collaboration text. If there are authors that are not part of any
+%% collaboration the \nocollaboration command is used. This command takes
+%% one argument which is also the number of authors above to show. A
+%% dashed line is shown to indicate no collaboration. This example manuscript
+%% shows how these commands work to display specific set of authors 
+%% on the front page.
+%%
+%% For manuscript without any need to use \collaboration the 
+%% \AuthorCollaborationLimit command from v6.2 can still be used to 
+%% show a subset of authors.
+%
+%\AuthorCollaborationLimit=2
+%
+%% will only show Schwarz & Muench on the front page of the manuscript
+%% (assuming the \collaboration and \nocollaboration commands are
+%% commented out).
+%%
+%% Note that all of the author will be shown in the published article.
+%% This feature is meant to be used prior to acceptance to make the
+%% front end of a long author article more manageable. Please do not use
+%% this functionality for manuscripts with less than 20 authors. Conversely,
+%% please do use this when the number of authors exceeds 40.
+%%
+%% Use \allauthors at the manuscript end to show the full author list.
+%% This command should only be used with \AuthorCollaborationLimit is used.
+
+%% The following command can be used to set the latex table counters.  It
+%% is needed in this document because it uses a mix of latex tabular and
+%% AASTeX deluxetables.  In general it should not be needed.
+%\setcounter{table}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% The following section outlines numerous optional output that
+%% can be displayed in the front matter or as running meta-data.
+%%
+%% If you wish, you may supply running head information, although
+%% this information may be modified by the editorial offices.
+%\shorttitle{AASTeX v6.3.1 Sample article}
+%\shortauthors{Schwarz et al.}
+%%
+%% You can add a light gray and diagonal water-mark to the first page 
+%% with this command:
+%% \watermark{text}
+%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
+%% long you can control the water-mark size with:
+%% \setwatermarkfontsize{dimension}
+%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\graphicspath{{./}{figures/}}
+%% This is the end of the preamble.  Indicate the beginning of the
+%% manuscript itself with \begin{document}.
+
+\begin{document}
+
+\title{Transit light curve fitting of Earth-like exoplanet candidate Kepler-452b}
+
+%% LaTeX will automatically break titles if they run longer than
+%% one line. However, you may use \\ to force a line break if
+%% you desire. In v6.31 you can include a footnote in the title.
+
+%% A significant change from earlier AASTEX versions is in the structure for 
+%% calling author and affiliations. The change was necessary to implement 
+%% auto-indexing of affiliations which prior was a manual process that could 
+%% easily be tedious in large author manuscripts.
+%%
+%% The \author command is the same as before except it now takes an optional
+%% argument which is the 16 digit ORCID. The syntax is:
+%% \author[xxxx-xxxx-xxxx-xxxx]{Author Name}
+%%
+%% This will hyperlink the author name to the author's ORCID page. Note that
+%% during compilation, LaTeX will do some limited checking of the format of
+%% the ID to make sure it is valid. If the "orcid-ID.png" image file is 
+%% present or in the LaTeX pathway, the OrcID icon will appear next to
+%% the authors name.
+%%
+%% Use \affiliation for affiliation information. The old \affil is now aliased
+%% to \affiliation. AASTeX v6.31 will automatically index these in the header.
+%% When a duplicate is found its index will be the same as its previous entry.
+%%
+%% Note that \altaffilmark and \altaffiltext have been removed and thus 
+%% can not be used to document secondary affiliations. If they are used latex
+%% will issue a specific error message and quit. Please use multiple 
+%% \affiliation calls for to document more than one affiliation.
+%%
+%% The new \altaffiliation can be used to indicate some secondary information
+%% such as fellowships. This command produces a non-numeric footnote that is
+%% set away from the numeric \affiliation footnotes.  NOTE that if an
+%% \altaffiliation command is used it must come BEFORE the \affiliation call,
+%% right after the \author command, in order to place the footnotes in
+%% the proper location.
+%%
+%% Use \email to set provide email addresses. Each \email will appear on its
+%% own line so you can put multiple email address in one \email call. A new
+%% \correspondingauthor command is available in V6.31 to identify the
+%% corresponding author of the manuscript. It is the author's responsibility
+%% to make sure this name is also in the author list.
+%%
+%% While authors can be grouped inside the same \author and \affiliation
+%% commands it is better to have a single author for each. This allows for
+%% one to exploit all the new benefits and should make book-keeping easier.
+%%
+%% If done correctly the peer review system will be able to
+%% automatically put the author and affiliation information from the manuscript
+%% and save the corresponding author the trouble of entering it by hand.
+
+%\correspondingauthor{August Muench}
+%\email{greg.schwarz@aas.org, gus.muench@aas.org}
+
+\author[0000-0002-1679-2917]{Albert C. Zhang}
+\affiliation{Columbia University}
+
+%% Note that the \and command from previous versions of AASTeX is now
+%% depreciated in this version as it is no longer necessary. AASTeX 
+%% automatically takes care of all commas and "and"s between authors names.
+
+%% AASTeX 6.31 has the new \collaboration and \nocollaboration commands to
+%% provide the collaboration status of a group of authors. These commands 
+%% can be used either before or after the list of corresponding authors. The
+%% argument for \collaboration is the collaboration identifier. Authors are
+%% encouraged to surround collaboration identifiers with ()s. The 
+%% \nocollaboration command takes no argument and exists to indicate that
+%% the nearby authors are not part of surrounding collaborations.
+
+%% Mark off the abstract in the ``abstract'' environment. 
+\begin{abstract}
+
+We report an analysis of the light curve data of Kepler-452, a system that possibly contains a single transiting Earth-like in planet in the habitable zone. We fit the relative radius, impact parameter, and stellar density of the exoplanet candidate Kepler-452b using a Markov Chain Monte Carlo (MCMC) method informed by previous results in \citet{jenkinsDISCOVERYVALIDATIONKepler452b2015}. Our results lean towards a smaller size for Kepler-452b and a higher density for the star it orbits compared to literature. We additionally obtain a posterior distribution for the equilibrium temperature and radius of Kepler-452b using stellar parameters from the DR25 catalog \citep{mathurRevisedStellarProperties2017}. Our results place Kepler-452b as very likely within the habitable zone temperature criterion $207.5 \mathrm{K} < T_p < 320.4 \mathrm{K}$ but with only a small probability $R_p < 1.23 R_\odot$, a naive indicator for rocky composition. We find a 13\% probability of the Kepler-452b being both rocky and in the habitable zone. Generally, our findings support Kepler-452b's most likely classification as a super-Earth located within the habitable zone of its star.
+
+\end{abstract}
+
+%% Keywords should appear after the \end{abstract} command. 
+%% The AAS Journals now uses Unified Astronomy Thesaurus concepts:
+%% https://astrothesaurus.org
+%% You will be asked to selected these concepts during the submission process
+%% but this old "keyword" functionality is maintained in case authors want
+%% to include these concepts in their preprints.
+
+%% From the front matter, we move on to the body of the paper.
+%% Sections are demarcated by \section and \subsection, respectively.
+%% Observe the use of the LaTeX \label
+%% command after the \subsection to give a symbolic KEY to the
+%% subsection for cross-referencing in a \ref command.
+%% You can use LaTeX's \ref and \label commands to keep track of
+%% cross-references to sections, equations, tables, and figures.
+%% That way, if you change the order of any elements, LaTeX will
+%% automatically renumber them.
+%%
+%% We recommend that authors also use the natbib \citep
+%% and \citet commands to identify citations.  The citations are
+%% tied to the reference list via symbolic KEYs. The KEY corresponds
+%% to the KEY in the \bibitem in the reference list below. 
+
+\section{Introduction} \label{sec:intro}
+
+The Kepler-452b was first described by \citet{jenkinsDISCOVERYVALIDATIONKepler452b2015} as a possibly rocky super-Earth orbiting within the habitable zone of its host star. At the time, the reported period of $384.843^{+0.007}_{-0.012}$ days and radius of $1.63^{+0.23}_{-0.20}$ $R_\odot$ placed Kepler-452b as the small, transiting exoplanet with the longest period yet discovered. Later analysis by \citet{mullallyKeplerEarthlikePlanets2018} and \citet{burkeReevaluatingSmallLongperiod2019} has shed considerable doubt on the detection confidence of Kepler-452b and other long period, small exoplanet candidates discovered by Kepler. They found that Kepler-452b does not meet the 99\% confidence threshold for Kepler detections due to a systematic false alarm probability.
+
+In this paper, we work under the assumption that Kepler-452b is a real planet and not a false alarm. We adopted the transit timing parameters reported in  \citet{jenkinsDISCOVERYVALIDATIONKepler452b2015} without modification. We used a transit period of 384.843 days and set the first transit time at MJD 55147.980.
+
+\subsection{Outlier detection and detrending}
+
+The first observation (at MJD 55091.468) in the provided data file is an extreme outlier with a relative flux value of 0.964, much lower than the second lowest observation at 0.9987. This data point is likely an error in pre-processing and was not considered in any analysis. We looked for additional outliers in the data using a rolling median with a five-observation window and a $3 \sigma$ threshold. This search marked 1.2\% of the observations as outliers. While this is more than would be expected from a Gaussian sample, we did not find a strong case for the marked points as requiring removal after visual inspection and opted to select a detrending method robust against outliers instead of masking them outliers.
+
+We performed non-parametric detrending using a time-windowed median locator, which is easy to implement and has been found to perform well in benchmarks against other methods \citep{hippkeWotanComprehensiveTimeseries2019}. We chose a window length of three times  the reported transit duration of $10.63$ h.
+
+\subsection{Transit model fitting}
+We use the \texttt{batman} Python package to model transit light curves \citep{2015PASP..127.1161K}. We assume a circular planetary orbit with the timing parameters from \citet{jenkinsDISCOVERYVALIDATIONKepler452b2015}. We used a quadratic stellar limb-darkening law with parameters supplied by Prof. Kipping.
+
+\begin{figure}[!ht]
+    \plotone{model_test.pdf}
+    \caption{The detrended light curve for $Kepler-452$ folded around the transits of $Kepler-452b$. The "Test transit model" was created with the parameters reported by \citet{jenkinsDISCOVERYVALIDATIONKepler452b2015} using \texttt{batman}.}
+    \label{fig:model_test}
+\end{figure}
+
+We fit the transit model to the data  with MCMC using the \texttt{emcee} Python package \citep{2013PASP..125..306F}. We considered three model parameters: the relative radius of the planet ($R_p / R_\ast$), the impact parameter ($b = a \cos i / R_\ast$), and the stellar density ($\log \rho_\ast$). Uniform priors are adopted for each parameter, with $b$ constrained to positive numbers. We compute the $\chi^2$ log-likelihood for each model proposal. We ran an 8 walker ensemble for $2^{16} = 65536$ samples per walker, removing the first 1000 samples of burn in.
+
+\begin{figure}[!ht]
+    \plotone{corner.pdf}
+    \caption{Corner plot of posteriors for $R_p / R_\ast$, $\log \rho_\ast$, and $b$ for Kepler-452b from \texttt{emcee}. There are a total of $8 \times (2^{16} - 1000) = 516,288$ samples represented. The full result for $R_p / R_\ast$ is $0.0112^{+0.0011}_{-0.0008}$. Figure created with \texttt{corner.py} \citep{corner}}
+    \label{fig:corner}
+\end{figure}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    Parameter &\citet{jenkinsDISCOVERYVALIDATIONKepler452b2015} &This work  \\
+         \hline
+         $R_p / R_\ast$ & $0.0128^{+0.0013}_{-0.0006}$ &  $0.0112^{+0.0011}_{-0.0008}$ \\
+         $\log \rho_\ast$ [kg m$^3$] & $2.92^{+0.17}_{-0.11}$ & $3.35^{+0.17}_{-0.53}$ \\
+         $b$ & $0.690^{+0.160}_{-0.450}$ & $0.50^{+0.32}_{-0.33}$\\
+         \hline
+    \end{tabular}
+    \caption{Parameters of the orbit of $Kepler-452b$ and its host star. Comparison between this work and \citet{jenkinsDISCOVERYVALIDATIONKepler452b2015}}
+    \label{tab:tabl}
+\end{table}
+
+\section{Results}
+
+The center of our posterior distribution has a higher stellar density and smaller relative planetary radius than reported by \citet{jenkinsDISCOVERYVALIDATIONKepler452b2015}. Our distribution displays a long tail to the bottom right with increased planetary radii and much lower stellar densities. The values in \citet{jenkinsDISCOVERYVALIDATIONKepler452b2015} lie on the bottom right edge of our 2-sigma, or 86\% containment, region on the 2D histogram (middle of left column of Figure \ref{fig:corner}).
+
+The impact parameter $b$ is poorly constrained because the entire sample space corresponds to inclination angles of nearly 90 degrees, or edge-on from the telescope's perspective. Our result of $b = 0.50^{+0.32}_{-0.33}$ agrees the value $b = 0.690^{+0.160}_{-0.450}$ from \citet{jenkinsDISCOVERYVALIDATIONKepler452b2015} with little differentiation between $b = 0.2$ and $b = 0.8$.
+
+\subsection{Rocky and habitable?}
+
+We calculate joint posterior distributions for Kepler-452b's equilibrium temperature and radius using the DR 25 stellar posteriors sample for KIC 8311864 \citep{mathurRevisedStellarProperties2017}.
+
+The stellar radius reported in DR25 is $0.798^{+0.15}_{-0.075} M_\odot$ \citep{mathurRevisedStellarProperties2017}. This value disagrees significantly with the other solutions for the stellar parameters listed on the NASA Exoplanet Archive \url{https://exoplanetarchive.ipac.caltech.edu/overview/Kepler-452b}, which have a consensus around 1.1 $R_\odot$. \citet{jenkinsDISCOVERYVALIDATIONKepler452b2015} attribute the discrepancy to an overstated surface gravity measurement in the KIC. To better match the literature, we apply a corrective factor of $f_R = 1.1/0.8 = 1.375$ to the stellar radii posteriors from DR25. 
+
+We create 1,000,000 samples combining one random sample from our MCMC results and one random sample from the stellar posterior for $T_\ast$ and $R_\ast$. We calculate the planet's radius as $R_p = f_R R_\ast \left(R_p / R_\ast\right)$ and its temperature as
+
+\begin{equation}
+    T_p = T_\ast \sqrt{\frac{R_\odot}{2 a_p}}
+\end{equation}
+
+where $a_p$ is the semi-major axis of the orbit.
+
+We classify the planet as laying in the habitable zone if $207.5 \mathrm{K} < T_p < 320.4 \mathrm{K}$ and the  planet as rocky if $R_p < 1.23 R_\odot$.
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{c|cc|c}
+    $P(x)$ & $H$ & $\bar{H}$ & Total\\
+    \hline
+    $R$ & \textbf{0.13} & 0.00 & 0.13 \\
+    $\bar{R}$ & 0.75 & 0.11 & 0.87\\
+    \hline
+    Total & 0.89 & 0.11 & 1.00
+    \end{tabular}    \caption{Probabilities that Kepler-452b lies in the habitable zone ($H$), is rocky ($R$), or both with the correction for Kepler-452b's stellar radius applied. Based on our 1,000,000 samples of the MCMC results in this work and the DR25 stellar posterior.}
+    \label{tab:tab2}
+\end{table}
+
+\begin{figure}
+    \plotone{zone(1).pdf}
+    \caption{Corner plot of our joint $T_p, R_p$ distribution with our habitable zone and rocky planet criteria highlighted. A sample of 50,000 points is shown in the bottom left scatter plot.}
+    \label{fig:zone}
+\end{figure}
+
+We find that 89\% of our samples lies within our habitable zone, but only 11\% of our samples match the rocky planet criterion. Only 13\% of samples match both. Our value for Kepler-452b's radius, $R_p = 1.43^{+0.25}_{-0.18}$, has some overlap with the reported value $1.63^{+0.23}_{-0.20} R_\oplus$ \citep{jenkinsDISCOVERYVALIDATIONKepler452b2015}. The proportion of samples in the "rocky" radius range is reduced by the correction for the star's radius.
+
+
+\begin{acknowledgments}
+ACKNOLEDGEMENTS: The author would like to thank his friends Forrest Weintraub and Selina Yang for their never-ending support; his teammates Nitya Nigam and Ceaser Stringfield for their collaboration on previous labs; and Daniel Yahalomi and Prof. David Kipping for running an excellent course. I really had a lot of fun and learned a lot!
+\end{acknowledgments}
+
+
+%% For this sample we use BibTeX plus aasjournals.bst to generate the
+%% the bibliography. The sample631.bib file was populated from ADS. To
+%% get the citations to show in the compiled file do the following:
+%%
+%% pdflatex sample631.tex
+%% bibtext sample631
+%% pdflatex sample631.tex
+%% pdflatex sample631.tex
+
+\bibliography{indep_project}{}
+\bibliographystyle{aasjournal}
+
+%% This command is needed to show the entire author+affiliation list when
+%% the collaboration and author truncation commands are used.  It has to
+%% go at the end of the manuscript.
+%\allauthors
+
+%% Include this line if you are using the \added, \replaced, \deleted
+%% commands to see a summary list of all changes at the end of the article.
+%\listofchanges
+
+\end{document}
+
+% End of file `sample631.tex'.
