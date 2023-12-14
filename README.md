@@ -13,12 +13,12 @@ Provided as reference. NOT for redistribution or reuse.
 ## Table of Contents
 
 <table>
-  <tr>
+  <tr align="center">
       <th colspan="2"><a href="LAB1/">Lab 1</a></th>
       <th colspan="2"><a href="LAB1/">Lab 1 Part 2</a></th>
       <th colspan="2"><a href="LAB2/">Lab 2</a></th>
   </tr>
-  <tr>
+  <tr align="center">
       <td>
           <a href="LAB1/LAB1.ipynb"><b>Code</b></a>
       </td>
@@ -94,14 +94,12 @@ Provided as reference. NOT for redistribution or reuse.
           </p>
       </td>
   </tr>
-</table>
-<table>
-  <tr>
+  <tr align="center">
       <th colspan="2"><a href="LAB3/">Lab 3</a></th>
       <th colspan="2"><a href="LAB4/">Lab 4</a></th>
       <th colspan="2"><a href="INDEP_PROJ/">Final Project</a></th>
   </tr>
-  <tr>
+  <tr align="center">
       <td>
           <a href="LAB3/LAB3.ipynb"><b>Code</b></a>
       </td>
